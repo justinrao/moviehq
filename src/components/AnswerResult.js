@@ -43,7 +43,7 @@ class AnswerResult extends Component {
 
   renderPoster = () => {
     return this.state.posterPath &&
-      <MoviePoster title={this.props.correctAnswer.title} posterUrl={this.state.posterPath} height={300}/>
+      <MoviePoster title={this.props.correctAnswer.title} posterUrl={this.state.posterPath} height={350}/>
   };
 
   render() {
