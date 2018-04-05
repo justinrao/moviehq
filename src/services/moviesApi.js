@@ -25,7 +25,7 @@ class MoviesApi {
   }
 
   static get(movieId) {
-    return request('movie/' + movieId)
+    return request('find/' + movieId + '?api_key=' + commonParams.api_key + '&external_source=imdb_id')
   }
 }
 

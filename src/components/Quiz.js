@@ -11,7 +11,7 @@ class Quiz extends Component {
   constructor() {
     super();
     this.state = {
-      questions: QUESTIONS,
+      questions: QUESTIONS.splice(0, 10),
       currentQuestionIndex: 0,
       score: 0,
       done: false
@@ -40,7 +40,7 @@ class Quiz extends Component {
           selectedIndex: null,
           done: done
         }))
-      }, 2000)
+      }, 2500)
     });
   };
 
@@ -48,18 +48,24 @@ class Quiz extends Component {
   renderQuestion = () => {
     const question = this.state.questions[this.state.currentQuestionIndex];
 
+    const correctAnswer = question.options.find(option => option.answer);
+
+    {/*<AnswerResult answer={question.options[0]} correctAnswer={question.options[0]}/>*/}
+
     return (
 
-       !this.state.done ?
+    !this.state.done ?
       <Box padding={3} height={600}>
         <Text mdSize>Question: {this.state.currentQuestionIndex + 1}/{this.state.questions.length}</Text>
         <Heading size="xs">{question.question}</Heading>
 
         {this.state.selectedIndex == null ? this.renderOptions(question.options) :
-          <AnswerResult correct = {question.options[this.state.selectedIndex].answer}/>
+          <AnswerResult answer={question.options[this.state.selectedIndex]}
+                        correctAnswer={correctAnswer}/>
         }
       </Box> :
-      <FinalScore score={this.state.score} totalQuestionCount={this.state.questions.length}/>);
+      <FinalScore score={this.state.score} totalQuestionCount={this.state.questions.length}/>
+  );
   }
 
   renderOptions = (options) => {
