@@ -1,5 +1,5 @@
 
-export const QUESTIONS = [[
+export const QUESTIONS = [
   {
     "question": "Which of these movies was released most recently?",
     "options": [
@@ -1441,8 +1441,7 @@ export const QUESTIONS = [[
         "title": "Solar das Taras Proibidas",
         "year": 1984,
         "answer": false
-      },
-      {
-        "tconst": "tt0175635",
-
-    ];
+      }
+    ]
+  }
+  ];
