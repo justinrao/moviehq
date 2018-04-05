@@ -8,10 +8,38 @@ import FinalScore from './FinalScore';
 
 class Quiz extends Component {
 
+
+  getQuestions(total) {
+    total = total || 5;
+    let indexes = [];
+    while (true) {
+      const index = Math.floor(Math.random() * Math.floor(QUESTIONS.length));
+      if (!indexes.includes(index)) {
+        indexes.push(index);
+        console.log('added ' + index)
+      } else {
+        console.log('ignored ' + index);
+      }
+
+      if (indexes.length == total) {
+        break;
+      }
+    }
+
+    let result = [];
+    indexes.forEach(function(element) {
+      console.log(element);
+      result.push(QUESTIONS[element]);
+    });
+
+    return result;
+  }
+
   constructor() {
     super();
+
     this.state = {
-      questions: QUESTIONS.splice(0, 10),
+      questions: this.getQuestions(5),
       currentQuestionIndex: 0,
       score: 0,
       done: false
