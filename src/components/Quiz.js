@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Box, Button, Container, Heading, Icon, IconButton, Text} from 'gestalt';
+import AnswerResult from './AnswerResult';
+import Header from './Header';
 
 class Quiz extends Component {
 
@@ -45,7 +47,7 @@ class Quiz extends Component {
 
         ],
       currentQuestionIndex: 0,
-      score:0
+      score: 0
     };
   }
 
@@ -60,49 +62,43 @@ class Quiz extends Component {
 
     this.setState((prevState) => ({
       ...prevState, selectedIndex, score
-    }));
-    console.log(selectedIndex);
+    }), () =>  {
+      setTimeout(() => {
+        this.setState((prevState) => ({
+          ...prevState,
+            currentQuestionIndex: prevState.currentQuestionIndex + 1,
+            selectedIndex: null,
+        }))
+      }, 3000)
+    });
   };
 
+  renderQuestion = (question) => (
+    <Box padding={3} height={600}>
+      <Text mdSize>Question: {this.state.currentQuestionIndex + 1}/{this.state.questions.length}</Text>
+      <Heading size="xs">{question.question}</Heading>
+
+      {!this.state.selectedIndex && this.renderAnswers(question.answers)}
+      {!!this.state.selectedIndex && <AnswerResult correct={true}/>}
+    </Box>);
+
+  renderAnswers = (answers) => {
+    return answers.map((answer, index) => (
+      <div style={{marginTop: 10}}>
+        <Button text={answer.text} color={this.state.selectedIndex === index ? "red" : "gray"}
+                onClick={() => this.onAnswerSelected(index)}/>
+      </div>
+    ))
+  }
 
   render() {
-
     const question = this.state.questions[0];
-    return (
 
+    return (
       <Container>
         <Box maxWidth={600}>
-
-          <Box color="white" shape="rounded" padding={3} display="flex" direction="row" alignItems="center">
-            <Box padding={3}>
-              <Icon
-                color="red"
-                icon="globe"
-                size={20}
-                accessibilityLabel="moviepin">
-              </Icon>
-            </Box>
-            <Box flex="grow" paddingX={2} justifyContent="center" alignContent="center">
-              <Heading size="xs" color="red">Movie HQ</Heading>
-            </Box>
-            <Box paddingX={2}>
-              <Text color="red" mdSize>Score: {this.state.score}/{this.state.questions.length}</Text>
-            </Box>
-            <Box paddingX={2}>
-              <IconButton accessibilityLabel="Profile" icon="person" size="md"/>
-            </Box>
-          </Box>
-          <Box padding={3}>
-            <Heading size="xs">{question.question}</Heading>
-
-            {question.answers.map((answer, index) => (
-              <div style={{marginTop: 10}}>
-                <Button text={answer.text} color={this.state.selectedIndex === index ? "red" : "gray"}
-                        onClick={() => this.onAnswerSelected(index)}/>
-              </div>
-            ))}
-          </Box>
-
+          <Header score={this.state.score} totalQuestionCount={this.state.questions.length}/>
+          {this.renderQuestion(question)}
         </Box>
       </Container>
     )
