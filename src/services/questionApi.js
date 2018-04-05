@@ -2,7 +2,9 @@ import {QUESTIONS} from './questions';
 
 const getQuestions = (total) => {
 
-  return QUESTIONS.splice(0, 5);
+  const count = QUESTIONS.length;
+  const start = (Date.now() / 1000 / 20) % count;
+  return QUESTIONS.splice(start, total);
   // total = total || 5;
   // let indexes = [];
   // while (true) {

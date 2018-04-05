@@ -58,7 +58,7 @@ class AnswerResult extends Component {
         </Box>}
 
         {!this.state.showIcon && this.renderPoster()}
-        {!this.state.showIcon && <Heading size="xs">Correct Answer: {this.props.correctAnswer.title}</Heading>}
+        {!this.state.showIcon && <Heading size="xs">Answer: {this.props.correctAnswer.title}</Heading>}
     </Box>)
   }
 }
