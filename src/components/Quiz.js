@@ -40,7 +40,7 @@ class Quiz extends Component {
           selectedIndex: null,
           done: done
         }))
-      }, 2500)
+      }, 4000)
     });
   };
 
@@ -55,7 +55,7 @@ class Quiz extends Component {
     return (
 
     !this.state.done ?
-      <Box padding={3} height={600}>
+      <Box padding={3} height={500}>
         <Text mdSize>Question: {this.state.currentQuestionIndex + 1}/{this.state.questions.length}</Text>
         <Heading size="xs">{question.question}</Heading>
 
