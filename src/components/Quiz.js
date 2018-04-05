@@ -37,7 +37,7 @@ class Quiz extends Component {
           currentQuestionIndex: prevState.currentQuestionIndex + 1,
           selectedIndex: null,
         }))
-      }, 2000)
+      }, 14000)
     });
   };
 
@@ -51,7 +51,7 @@ class Quiz extends Component {
         <Heading size="xs">{question.question}</Heading>
 
         {this.state.selectedIndex == null ? this.renderOptions(question.options) :
-          <AnswerResult correct = {currentQuestion.options[this.state.selectedIndex].answer}/>
+          <AnswerResult answer = {currentQuestion.options[this.state.selectedIndex]}/>
         }
       </Box>);
   }
