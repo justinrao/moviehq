@@ -2,9 +2,14 @@ import React, {Component} from 'react';
 import {Box, Button, Container, Heading, Icon, IconButton, Text} from 'gestalt';
 import MoviePoster from './MoviePoster';
 import MoviesApi from '../services/moviesApi'
+import Sound from 'react-sound'
+// var Sound = require('react-sound').default;
 
 
 const POSTER_URL_PREFIX = 'http://image.tmdb.org/t/p/w500/';
+
+const SOUND_CORRECT = 'https://freesound.org/data/previews/131/131660_2398403-lq.mp3';
+const SOUND_INCORRECT = 'https://freesound.org/data/previews/33/33245_65091-lq.mp3';
 
 class AnswerResult extends Component {
 
@@ -41,6 +46,10 @@ class AnswerResult extends Component {
       });
   }
 
+  getSound = (correct) => {
+    return correct? SOUND_CORRECT: SOUND_INCORRECT;
+  }
+
   renderPoster = () => {
     return this.state.posterPath &&
       <MoviePoster title={this.props.correctAnswer.title} posterUrl={this.state.posterPath} height={350}/>
@@ -55,7 +64,11 @@ class AnswerResult extends Component {
         <Box position="absolute">
           {correct ? <Icon color="green" icon="check" size={120}></Icon>
             : <Icon color="red" icon="cancel" size={120}></Icon>}
+
+
         </Box>}
+
+        <Sound url={this.getSound(correct)} playStatus={Sound.status.PLAYING} autoLoad={true} />
 
         {!this.state.showIcon && this.renderPoster()}
         {!this.state.showIcon && <Heading size="xs">Answer: {this.props.correctAnswer.title}</Heading>}
