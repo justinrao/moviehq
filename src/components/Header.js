@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import {Box, Button, Container, Heading, Icon, IconButton, Text} from 'gestalt';
-import AnswerResult from './AnswerResult';
+import React from 'react';
+import {Box, Heading, Icon, IconButton, Text} from 'gestalt';
 
 const Header = ({score, totalQuestionCount}) => (
   <Box color="white" shape="rounded" padding={3} display="flex" direction="row" alignItems="center">
@@ -16,7 +15,7 @@ const Header = ({score, totalQuestionCount}) => (
       <Heading size="xs" color="red">Movie HQ</Heading>
     </Box>
     <Box paddingX={2}>
-      <Text color="red" mdSize>Score: {score}/{totalQuestionCount}</Text>
+      <Text color="red" mdSize>Score: {score} / {totalQuestionCount}</Text>
     </Box>
     <Box paddingX={2}>
       <IconButton accessibilityLabel="Profile" icon="person" size="md"/>

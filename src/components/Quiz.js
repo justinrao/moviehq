@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {Box, Button, Container, Heading, Text} from 'gestalt';
 import AnswerResult from './AnswerResult';
 import Header from './Header';
+import {QUESTIONS_2} from '../services/questions_only2';
 import {QUESTIONS} from '../services/questions';
+import FinalScore from './FinalScore';
 
 class Quiz extends Component {
 
@@ -11,7 +13,8 @@ class Quiz extends Component {
     this.state = {
       questions: QUESTIONS,
       currentQuestionIndex: 0,
-      score: 0
+      score: 0,
+      done: false
     };
   }
 
@@ -24,36 +27,39 @@ class Quiz extends Component {
       score++;
     }
 
-    const lastQuestion = this.state.currentQuestionIndex === this.state.questions.length;
-
     this.setState((prevState) => ({
       ...prevState, selectedIndex, score
     }), () => {
       setTimeout(() => {
 
-        // newQuestionIndex =
+        const done = this.state.currentQuestionIndex + 1 === this.state.questions.length;
+
         this.setState((prevState) => ({
           ...prevState,
-          currentQuestionIndex: prevState.currentQuestionIndex + 1,
+          currentQuestionIndex: done ? prevState.currentQuestionIndex : prevState.currentQuestionIndex + 1,
           selectedIndex: null,
+          done: done
         }))
       }, 2000)
     });
   };
 
-  renderQuestion = (question) => {
-    const currentQuestion = this.state.questions[this.state.currentQuestionIndex];
+
+  renderQuestion = () => {
+    const question = this.state.questions[this.state.currentQuestionIndex];
 
     return (
 
+       !this.state.done ?
       <Box padding={3} height={600}>
         <Text mdSize>Question: {this.state.currentQuestionIndex + 1}/{this.state.questions.length}</Text>
         <Heading size="xs">{question.question}</Heading>
 
         {this.state.selectedIndex == null ? this.renderOptions(question.options) :
-          <AnswerResult correct = {currentQuestion.options[this.state.selectedIndex].answer}/>
+          <AnswerResult correct = {question.options[this.state.selectedIndex].answer}/>
         }
-      </Box>);
+      </Box> :
+      <FinalScore score={this.state.score} totalQuestionCount={this.state.questions.length}/>);
   }
 
   renderOptions = (options) => {
@@ -66,13 +72,12 @@ class Quiz extends Component {
   };
 
   render() {
-    const question = this.state.questions[0];
 
     return (
       <Container>
         <Box maxWidth={600}>
           <Header score={this.state.score} totalQuestionCount={this.state.questions.length}/>
-          {this.renderQuestion(question)}
+          {this.renderQuestion()}
         </Box>
       </Container>
     )

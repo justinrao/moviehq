@@ -1,13 +1,17 @@
-import React, {Component} from 'react';
-import {Box, Button, Container, Heading, Icon, IconButton, Text} from 'gestalt';
+import React from 'react';
+import {Box, Heading} from 'gestalt';
 
 const FinalScore = ({score, totalQuestionCount}) => (
 
-  <Box display="flex" direction="vertical" alignItems="center" justifyContent="center" height={300}>
+  <Box display="flex" direction="column" alignItems="center" justifyContent="center" height={300}>
 
-    <Heading size="lg">Your Final Score:</Heading>
-    <Heading size="xl">Score: {score}/{totalQuestionCount}</Heading>
+    <Box>
+    <Heading size="lg">Your final score:</Heading>
+    </Box>
+  <Box>
+    <Heading size="xl" color="red"> {score} / {totalQuestionCount}</Heading>
+  </Box>
   </Box>
 );
 
-export default FinalScore;
+  export default FinalScore;

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Box, Button, Container, Heading, Icon, IconButton, Text} from 'gestalt';
+import React from 'react';
+import {Box, Icon} from 'gestalt';
 
 const AnswerResult = ({correct}) => (
 
