@@ -43,15 +43,24 @@ class Quiz extends Component {
             ]
           }
 
-        ]
+        ],
+      currentQuestionIndex: 0,
+      score:0
     };
   }
 
   onAnswerSelected = selectedIndex => {
+
+    const currentQuestion = this.state.questions[this.state.currentQuestionIndex];
+
+    let score = this.state.score;
+    if (currentQuestion.answers[selectedIndex].correct) {
+      score++;
+    }
+
     this.setState((prevState) => ({
-      ...prevState,
-      selectedIndex: selectedIndex
-    }))
+      ...prevState, selectedIndex, score
+    }));
     console.log(selectedIndex);
   };
 
@@ -75,6 +84,9 @@ class Quiz extends Component {
             </Box>
             <Box flex="grow" paddingX={2} justifyContent="center" alignContent="center">
               <Heading size="xs" color="red">Movie HQ</Heading>
+            </Box>
+            <Box paddingX={2}>
+              <Text color="red" mdSize>Score: {this.state.score}/{this.state.questions.length}</Text>
             </Box>
             <Box paddingX={2}>
               <IconButton accessibilityLabel="Profile" icon="person" size="md"/>
