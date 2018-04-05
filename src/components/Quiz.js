@@ -7,7 +7,6 @@ import getQuestions from '../services/questionApi';
 
 class Quiz extends Component {
 
-
   constructor() {
     super();
 
