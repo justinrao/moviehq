@@ -28,7 +28,7 @@ class AnswerResult extends Component {
         ...prevState,
         showIcon: false
       }))
-    });
+    }, 1200);
     MoviesApi.get(movieId)
       .then(response => {
 
@@ -42,10 +42,8 @@ class AnswerResult extends Component {
   }
 
   renderPoster = () => {
-    return this.state.posterPath ?
-      <MoviePoster title={this.props.correctAnswer.title} posterUrl={this.state.posterPath} height={300}/> :
-      <Box height={300}></Box>
-
+    return this.state.posterPath &&
+      <MoviePoster title={this.props.correctAnswer.title} posterUrl={this.state.posterPath} height={300}/>
   };
 
   render() {
@@ -59,9 +57,8 @@ class AnswerResult extends Component {
             : <Icon color="red" icon="cancel" size={120}></Icon>}
         </Box>}
 
-
         {!this.state.showIcon && this.renderPoster()}
-        {!this.state.showIcon && <Heading size="xs">{this.props.correctAnswer.title}</Heading>}
+        {!this.state.showIcon && <Heading size="xs">Correct Answer: {this.props.correctAnswer.title}</Heading>}
     </Box>)
   }
 }

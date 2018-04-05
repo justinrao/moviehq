@@ -40,7 +40,7 @@ class Quiz extends Component {
           selectedIndex: null,
           done: done
         }))
-      }, 2500)
+      }, 3000)
     });
   };
 

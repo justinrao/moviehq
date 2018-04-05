@@ -4,6 +4,7 @@
     <list default="true" id="502e01f5-0794-4935-b245-840827a9e1a5" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/components/AnswerResult.js" afterPath="$PROJECT_DIR$/src/components/AnswerResult.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Quiz.js" afterPath="$PROJECT_DIR$/src/components/Quiz.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +19,8 @@
       <file leaf-file-name="Quiz.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Quiz.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="62" column="20" lean-forward="true" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+            <state relative-caret-position="-155">
+              <caret line="42" column="11" lean-forward="false" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -79,8 +80,8 @@
       <file leaf-file-name="AnswerResult.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/AnswerResult.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="56" column="8" lean-forward="false" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
+            <state relative-caret-position="445">
+              <caret line="60" column="68" lean-forward="false" selection-start-line="60" selection-start-column="68" selection-end-line="60" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -157,8 +158,8 @@
         <option value="$PROJECT_DIR$/src/services/questions.js" />
         <option value="$PROJECT_DIR$/src/components/FinalScore.js" />
         <option value="$PROJECT_DIR$/src/components/MoviePoster.js" />
-        <option value="$PROJECT_DIR$/src/components/Quiz.js" />
         <option value="$PROJECT_DIR$/src/services/questionApi.js" />
+        <option value="$PROJECT_DIR$/src/components/Quiz.js" />
         <option value="$PROJECT_DIR$/src/components/AnswerResult.js" />
       </list>
     </option>
@@ -354,7 +355,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522935762596</updated>
-      <workItem from="1522935765035" duration="19496000" />
+      <workItem from="1522935765035" duration="19654000" />
     </task>
     <task id="LOCAL-00001" summary="two posters">
       <created>1522956893752</created>
@@ -367,7 +368,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19496000" />
+    <option name="totallyTimeSpent" value="19654000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -562,8 +563,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Quiz.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="62" column="20" lean-forward="true" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+        <state relative-caret-position="-155">
+          <caret line="42" column="11" lean-forward="false" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -572,8 +573,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/AnswerResult.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="56" column="8" lean-forward="false" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
+        <state relative-caret-position="445">
+          <caret line="60" column="68" lean-forward="false" selection-start-line="60" selection-start-column="68" selection-end-line="60" selection-end-column="68" />
           <folding />
         </state>
       </provider>
