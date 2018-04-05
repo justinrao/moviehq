@@ -2,44 +2,17 @@ import React, {Component} from 'react';
 import {Box, Button, Container, Heading, Text} from 'gestalt';
 import AnswerResult from './AnswerResult';
 import Header from './Header';
-import {QUESTIONS_2} from '../services/questions_only2';
-import {QUESTIONS} from '../services/questions';
 import FinalScore from './FinalScore';
+import getQuestions from '../services/questionApi';
 
 class Quiz extends Component {
 
-
-  getQuestions(total) {
-    total = total || 5;
-    let indexes = [];
-    while (true) {
-      const index = Math.floor(Math.random() * Math.floor(QUESTIONS.length));
-      if (!indexes.includes(index)) {
-        indexes.push(index);
-        console.log('added ' + index)
-      } else {
-        console.log('ignored ' + index);
-      }
-
-      if (indexes.length == total) {
-        break;
-      }
-    }
-
-    let result = [];
-    indexes.forEach(function(element) {
-      console.log(element);
-      result.push(QUESTIONS[element]);
-    });
-
-    return result;
-  }
 
   constructor() {
     super();
 
     this.state = {
-      questions: this.getQuestions(5),
+      questions: getQuestions(6),
       currentQuestionIndex: 0,
       score: 0,
       done: false

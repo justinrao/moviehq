@@ -41,8 +41,10 @@ class AnswerResult extends Component {
           {correct ? <Icon color="green" icon="check" size={120}></Icon>
             : <Icon color="red" icon="cancel" size={120}></Icon>}
         </Box>
-      {this.state.posterPath &&
-        <MoviePoster title={this.props.correctAnswer.title} posterUrl={this.state.posterPath} height={300}/>}
+      {this.state.posterPath ?
+        <MoviePoster title={this.props.correctAnswer.title} posterUrl={this.state.posterPath} height={300}/> :
+        <Box height={300}></Box>
+      }
           <Heading size="xs">{this.props.correctAnswer.title}</Heading>
     </Box>)
   }
