@@ -3,7 +3,7 @@ import {QUESTIONS} from './questions';
 const getQuestions = (total) => {
 
   const count = QUESTIONS.length;
-  const start = (Date.now() / 1000 / 20) % count;
+  const start = (Date.now() * count / 1000 / 60) % count;
   return QUESTIONS.splice(start, total);
   // total = total || 5;
   // let indexes = [];
