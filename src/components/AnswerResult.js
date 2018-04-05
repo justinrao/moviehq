@@ -11,7 +11,9 @@ class AnswerResult extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      showIcon: true
+    };
   }
 
 
@@ -20,6 +22,13 @@ class AnswerResult extends Component {
 
     const movieId = this.props.correctAnswer.tconst;
 
+
+    setTimeout(() => {
+      this.setState((prevState) => ({
+        ...prevState,
+        showIcon: false
+      }))
+    });
     MoviesApi.get(movieId)
       .then(response => {
 
@@ -32,20 +41,27 @@ class AnswerResult extends Component {
       });
   }
 
+  renderPoster = () => {
+    return this.state.posterPath ?
+      <MoviePoster title={this.props.correctAnswer.title} posterUrl={this.state.posterPath} height={300}/> :
+      <Box height={300}></Box>
+
+  };
+
   render() {
 
     const correct = this.props.answer.answer;
     return (
       <Box display="flex" direction="column" alignItems="center" justifyContent="center" height={400}>
+        {this.state.showIcon &&
         <Box position="absolute">
           {correct ? <Icon color="green" icon="check" size={120}></Icon>
             : <Icon color="red" icon="cancel" size={120}></Icon>}
-        </Box>
-      {this.state.posterPath ?
-        <MoviePoster title={this.props.correctAnswer.title} posterUrl={this.state.posterPath} height={300}/> :
-        <Box height={300}></Box>
-      }
-          <Heading size="xs">{this.props.correctAnswer.title}</Heading>
+        </Box>}
+
+
+        {!this.state.showIcon && this.renderPoster()}
+        {!this.state.showIcon && <Heading size="xs">{this.props.correctAnswer.title}</Heading>}
     </Box>)
   }
 }
